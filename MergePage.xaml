@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XmlMerger.MergePage"
+             Title="MergePage">
+    <VerticalStackLayout Spacing="15" Padding="20">
+        <!-- List to Display Selected XML Fields for Renaming -->
+        <Label Text="Selected XML Fields:" />
+        <CollectionView x:Name="SelectedFieldsListView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Horizontal" Spacing="10" >
+                        <Label Text="{Binding FieldName}" VerticalOptions="Center" />
+                        <Entry Text="{Binding NewFieldName, Mode=TwoWay}" Placeholder="Enter new name" VerticalOptions="Center" />
+                        <Button Text="Rename" Command="{Binding RenameCommand}" CommandParameter="{Binding .}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
+        <!-- Button to Merge and Export XML -->
+        <Button Text="Merge and Export XML" Clicked="MergeAndExportXmlClicked" WidthRequest="200"/>
+    </VerticalStackLayout>
+</ContentPage>

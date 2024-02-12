@@ -1,0 +1,51 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XmlMerger.MainPage">
+    <ScrollView>
+        <VerticalStackLayout Spacing="10">
+            <Grid Margin="20,35,20,20" ColumnSpacing="20" RowSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!-- Column 0: XML 1 -->
+                <Button Grid.Row="0" Text="Load XML 1 From File" Clicked="LoadXmlFromFileClicked" x:Name="LoadXml1FromFileButton" />
+                <Entry Grid.Row="1" x:Name="Xml1UrlEntry" Placeholder="Enter XML 1 URL here" />
+                <Button Grid.Row="2" Text="Load XML 1 from URL" Clicked="LoadXmlFromUrlClicked" x:Name="LoadXml1FromUrlButton" />
+                <CollectionView Grid.Row="3" Grid.Column="0" x:Name="Xml1FieldsListView" SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal">
+                                <CheckBox IsChecked="{Binding IsSelected}" />
+                                <Label Text="{Binding FieldName}" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Column 1: XML 2 -->
+                <Button Grid.Row="0" Grid.Column="1" Text="Load XML 2 From File" Clicked="LoadXmlFromFileClicked" x:Name="LoadXml2FromFileButton"/>
+                <Entry Grid.Row="1" Grid.Column="1" x:Name="Xml2UrlEntry" Placeholder="Enter XML 2 URL here" />
+                <Button Grid.Row="2" Grid.Column="1" Text="Load XML 2 from URL" Clicked="LoadXmlFromUrlClicked"  x:Name="LoadXml2FromUrlButton" />
+                <CollectionView Grid.Row="3" Grid.Column="1" x:Name="Xml2FieldsListView" SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal">
+                                <CheckBox IsChecked="{Binding IsSelected}" />
+                                <Label Text="{Binding FieldName}" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </Grid>
+            <Button Text="Go to Merge Page" Clicked="NavigateToMergePageClicked" HorizontalOptions="Center" WidthRequest="200" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
